@@ -1,0 +1,19 @@
+module ArrayUpdateVariableIndex(
+  input wire [23:0] a,
+  input wire [7:0] value,
+  input wire [31:0] idx,
+  output wire [23:0] out
+);
+  wire [7:0] a_unflattened[0:2];
+  assign a_unflattened[0] = a[7:0];
+  assign a_unflattened[1] = a[15:8];
+  assign a_unflattened[2] = a[23:16];
+  wire [7:0] array_update_8[0:2];
+  assign out = {array_update_8[2], array_update_8[1], array_update_8[0]};
+  genvar array_update_8__index;
+  generate
+    for (array_update_8__index = 0; array_update_8__index < 3; array_update_8__index = array_update_8__index + 1) begin : array_update_8__gen
+      assign array_update_8[array_update_8__index] = idx == array_update_8__index ? value : a_unflattened[array_update_8__index];
+    end
+  endgenerate
+endmodule
