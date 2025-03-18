@@ -21,7 +21,7 @@ def repo():
     """Initialize the llvm-project repository."""
 
     LLVM_COMMIT = "f01e760c08365426de95f02dc2c2dc670eb47352"
-    LLVM_SHA256 = "abd6f774f8580a9694dc847bd9ce624a4f3e8784543331a6255e2cc6967a6e41"
+    LLVM_SHA256 = "1234"
 
     maybe(
         http_archive,
